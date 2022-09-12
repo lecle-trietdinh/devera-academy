@@ -108,3 +108,13 @@ class Blockchain {
 ```
 
 ## Block time and difficulty adjustment
+
+- Add default block time as Blockchain property
+```
+ this.blockTime = 10000; // milisecond
+```
+
+- Adjust difficulty by block time to `addNewBlock`
+```
+this.difficulty += (Date.now() - new Date(newBlock.timestamp).getTime()) > this.blockTime ? -1 : 1;
+``` 
