@@ -9,7 +9,9 @@ The collection of Devera Academy's documents
 3. [NFTs essentials](https://docs.google.com/presentation/d/1UY1SAm6G5Bco3kP5mac8swq1P245NvPMqZKzIGvakds)
 4. [Introduction to ICON blockchain](https://docs.google.com/presentation/d/1ztZpzIBVTwP9TZvMbDEFWHkoOn9CzyoqDOflNLrROJs)
 5. [ICON execution](https://docs.google.com/presentation/d/1ABGUxmVlt6mnCd0MBdS0PnvtLn2wZ27mnPZtDv4F0rc/edit#slide=id.g150cb441be0_0_0)
-6. ICON smart contracts
-7. Building dApp with ICON javascript SDK
-8. Blockchain & Smart contract security
-9. Interoperability -  BTP & ICON Bridge
+6. [ICON smart contracts (P1)](https://docs.google.com/presentation/d/16J8L3ae5L0UCjPNP5z0lEKk1gUsJm6tjjHsEv4ZzptY) 
+7. [ICON smart contracts (P2)](https://docs.google.com/presentation/d/1CHkJAe0NplPK_KEJph9QS9z9BjLnprT6D8MxMWpGl9o)
+8. Building dApp with ICON javascript SDK (P1)
+9. Building dApp with ICON javascript SDK (P2)
+10. Blockchain & Smart contract security
+11. Interoperability -  BTP & ICON Bridge

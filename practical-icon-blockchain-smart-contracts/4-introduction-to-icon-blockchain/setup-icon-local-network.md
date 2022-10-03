@@ -60,7 +60,6 @@ export LD_LIBRARY_PATH=/usr/local/lib
 - Download goloop and build gochain-icon-image (this will take much time for building libs)
 ```
 sudo git clone https://github.com/icon-project/goloop.git
-GOLOOP_ROOT=/root/goloop
 cd goloop
 sudo make gochain-icon-image
 sudo docker images goloop/gochain-icon
@@ -70,7 +69,6 @@ sudo docker images goloop/gochain-icon
 - Download gochain-local
 ```
 sudo git clone https://github.com/icon-project/gochain-local.git
-GOCHAIN_LOCAL_ROOT=/root/gochain-local
 ```
 
 - Start

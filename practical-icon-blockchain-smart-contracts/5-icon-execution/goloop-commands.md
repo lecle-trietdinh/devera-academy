@@ -48,6 +48,10 @@ goloop rpc --uri http://localhost:9082/api/v3 call --to cx1b9849096b8c5870834eb6
 
 ### Send to contract
 ```
-goloop rpc --uri http://localhost:9082/api/v3 sendtx --to cx1b9849096b8c5870834eb6347549024b0b82d2e3  --method getGreeting
+goloop rpc sendtx call --to cx94194b2ab041a13480e0042e86bd9ca5bccc40b9 \
+    --uri http://127.0.0.1:9082/api/v3 \
+    --key_store /$HOME/gochain-local/data/godWallet.json --key_password gochain \
+    --nid 0x3 --step_limit 10000000 \
+    --method setName --param name=Course
 ```
 
