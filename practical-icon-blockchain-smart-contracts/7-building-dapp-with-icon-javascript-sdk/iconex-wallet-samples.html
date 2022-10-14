@@ -1,0 +1,121 @@
+<head>
+    <title>ICONex Wallet Samples</title>
+
+    <style>
+        body {
+            padding: 20px;
+            font-size: large;
+        }
+
+        div {
+            margin: 10px;
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: large;
+        }
+    </style>
+
+    <!-- ICON SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/icon-sdk-js@latest/build/icon-sdk-js.web.min.js"></script>
+
+    <script>
+        // // IconService instance
+        // const IconService = window['icon-sdk-js'].default;
+
+        // // configure testnet
+        // const httpProvider = new IconService.HttpProvider('https://sejong.net.solidwallet.io/api/v3');
+        // console.log('httpProvider', httpProvider)
+        // const iconService = new IconService(httpProvider);
+
+        var myAddress = '';
+        var helloWorldContract = 'cx2702d010265396002b12a5f1c98d5e8614d4def3';
+
+        function connectWallet() {
+            const customEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+                detail: {
+                    type: 'REQUEST_ADDRESS'
+                }
+            });
+            window.dispatchEvent(customEvent);
+
+            const eventHandler = event => {
+                const { type, payload } = event.detail;
+                if (type === 'RESPONSE_ADDRESS') {
+                    console.log(payload); // e.g., hx19870922...
+                    myAddress = payload;
+                    document.getElementById('cn-address').innerHTML = payload;
+                }
+            }
+            window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+        }
+
+        function getGreeting() {
+            const customEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+                detail: {
+                    type: 'REQUEST_JSON-RPC',
+                    payload: {
+                        jsonrpc: "2.0",
+                        method: "icx_call",
+                        id: 6339,
+                        params: {
+                            from: myAddress, // TX sender address
+                            to: document.getElementById('contract-address').value,   // SCORE address
+                            dataType: "call",
+                            data: {
+                                method: "getGreeting", // SCORE external function
+                                params: {}
+                            }
+                        }
+                    }
+                }
+            });
+            window.dispatchEvent(customEvent);
+
+            const eventHandler = event => {
+                const { type, payload } = event.detail;
+                if (type === 'RESPONSE_JSON-RPC') {
+                    console.log(payload); // e.g., {"jsonrpc": "2.0", "id": 6339, "result": { ... }}
+                    document.getElementById('getGreeting-result').innerHTML = payload.result;
+                }
+                else if (type === 'CANCEL_JSON-RPC') {
+                    console.error('User cancelled JSON-RPC request')
+                }
+            }
+            window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <h1>1. Connect Wallet</h1>
+        <div>
+            <button onclick="connectWallet()">Connect Wallet</button>
+            <div id="cn-address"></div>
+        </div>
+    </div>
+
+    <div>
+        <h1>Hello World contract address </h1>
+        <div><input id="contract-address" value="cx2702d010265396002b12a5f1c98d5e8614d4def3" style="width: 600px;" />
+        </div>
+    </div>
+
+    <div>
+        <h1>2. Call “getGreeting” to HelloWorld contract</h1>
+        <div>
+            <button onclick="getGreeting()">getGreeting</button>
+            <div id="getGreeting-result"></div>
+        </div>
+    </div>
+
+    <div>
+        <h1>3. Call “setName” to HelloWorld contract</h1>
+        <div>
+            <button onclick="setName()">setName</button>
+            <div id="setName-result"></div>
+        </div>
+    </div>
+</body>
