@@ -38,6 +38,8 @@ sudo ./gradlew optimizedJar
 ```
  
 ### 3. Deploy the optimized jar using goloop CLI
+
+Deploy Hello World
 ```
 goloop rpc sendtx deploy ./hello-world/build/libs/hello-world-0.1.0-optimized.jar \
     --uri http://127.0.0.1:9082/api/v3 \
@@ -45,6 +47,17 @@ goloop rpc sendtx deploy ./hello-world/build/libs/hello-world-0.1.0-optimized.ja
     --nid 0x3 --step_limit 10000000000 \
     --content_type application/java \
     --param name=Devera
+```
+
+
+Deploy IRC3 Token
+```
+goloop rpc sendtx deploy ./irc3-token/build/libs/irc3-token-0.9.0-optimized.jar \
+    --uri http://127.0.0.1:9082/api/v3 \
+    --key_store /$HOME/gochain-local/data/godWallet.json --key_password gochain \
+    --nid 0x3 --step_limit 10000000000 \
+    --content_type application/java \
+    --param _name=DeveraNFT --param _symbol=DEV
 ```
  
 ###  4. Verify the execution with deployed hash
