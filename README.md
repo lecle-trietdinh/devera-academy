@@ -12,4 +12,4 @@ The collection of Devera Academy's documents
 6. [ICON smart contracts (P1)](https://docs.google.com/presentation/d/16J8L3ae5L0UCjPNP5z0lEKk1gUsJm6tjjHsEv4ZzptY)  |  [ICON smart contracts (P2)](https://docs.google.com/presentation/d/1CHkJAe0NplPK_KEJph9QS9z9BjLnprT6D8MxMWpGl9o)
 7. [Building dApp with ICON javascript SDK (P1)](https://docs.google.com/presentation/d/1fdUsSGfStGXclBRoWXbyO47OlS8XP-8YfUs4hqZSC6c)  |  [Building dApp with ICON javascript SDK (P2)](https://docs.google.com/presentation/d/1H4LEkKqi45AfqKF2Ry_GfDD6yMSP4Va7v12FOMzRDLE)
 8. [Blockchain & Smart contract security](https://docs.google.com/presentation/d/1PCGlIRIRNOsHqrwn20rc9YujpLPcRBgEKAewmtuoDRY)
-9. Interoperability -  BTP & ICON Bridge
+9. [Interoperability -  BTP & ICON Bridge](https://docs.google.com/presentation/d/1aKZLL3--YZkBpZjneUJU1ysIC94-l_wFBlSgqaYbuLs)
