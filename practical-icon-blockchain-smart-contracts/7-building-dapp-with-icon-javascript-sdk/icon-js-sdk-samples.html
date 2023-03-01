@@ -1,0 +1,71 @@
+<head>
+    <title>ICON SDK Samples</title>
+
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        div {
+            margin: 10px;
+        }
+    </style>
+
+    <!-- ICON SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/icon-sdk-js@latest/build/icon-sdk-js.web.min.js"></script>
+
+    <script>
+        // IconService instance
+        const IconService = window['icon-sdk-js'].default;
+
+        // configure testnet
+        const httpProvider = new IconService.HttpProvider('https://sejong.net.solidwallet.io/api/v3');
+        console.log('httpProvider', httpProvider)
+        const iconService = new IconService(httpProvider);
+
+        const createWallet = async function () {
+            const wallet = IconService.IconWallet.create(); //Wallet Creation
+            const address = wallet.getAddress(); // Get Address
+            const privateKey = wallet.getPrivateKey(); // Get Private Key
+
+            document.getElementById('cw-address').innerHTML = `Address: ${address}`;
+            document.getElementById('cw-privatekey').innerHTML = `Private Key: ${privateKey}`;
+
+            document.getElementById('gb-address').value = address;
+        }
+
+        const getBalance = async function (addr) {
+            const balance = await iconService.getBalance(addr).execute();
+            console.log('balance', balance)
+            const balanceValue = IconService.IconAmount.of(balance, IconService.IconAmount.Unit.ICX).toString();
+            console.log('balanceValue', balanceValue)
+            document.getElementById('gb-balance').innerHTML = `Balance: ${balanceValue} ICX`;
+            return balanceValue;
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <h1>1. Create/Load Wallet</h1>
+        <div>
+            <button onclick="createWallet()">Create Wallet</button>
+            <div id="cw-address"></div>
+            <div id="cw-privatekey"></div>
+        </div>
+    </div>
+
+    <div>
+        <h1>2. Get balance</h1>
+        <div>
+            <div>Wallet 1: <br />
+                Address: hx3035d21b670714e34d39f3d531aa63d6196c29f2<br />
+                Private Key: 9044c3c075f22166be077de3febdaf89a6a968aa0805bd7883ccfa923e21e996</div>
+            <div>Wallet 2: <br />Address: hx21aef733e3d03e082b4f48af3b04f9e16be4117d<br />
+                Private Key: 9904b26571bbfb3e31feaa76c917c8dba2c0e711a3e1581943dffec483826419</div>
+            <input id="gb-address" value="" style="width: 400px;" />
+            <button onclick="getBalance(document.getElementById('gb-address').value)">Get Balance</button>
+            <div id="gb-balance"></div>
+        </div>
+    </div>
+</body>
